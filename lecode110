@@ -1,0 +1,29 @@
+// judge whether the tree is balance tree
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        if(root==NULL)
+        return true;
+       
+        bool p=abs(depth(root->left)-depth(root->right))<=1;
+        if(!p)
+        return false;
+        
+        
+        return isBalanced(root->left)&&isBalanced(root->right) ;
+        
+        
+    }
+    
+    
+    
+    int depth(TreeNode *root){
+        if(root==NULL)
+        return 0;
+        
+        int l=depth(root->left);
+        int r=depth(root->right);
+        return 1+(l>r?l:r);
+        
+    }
+};
